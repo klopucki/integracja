@@ -1,4 +1,4 @@
-package pl.umcs;
+package pl.umcs.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,10 +44,10 @@ public class UserController {
         return user;
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteUser(@PathVariable Integer id) {
-        removeUser(id);
-        log.info("Delete user with id {}", id);
+    @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteUser(@RequestBody User user) {
+        removeUser(user.getId());
+        log.info("Delete user with id {}", user.getId());
         return new ResponseEntity(NO_CONTENT);
     }
 
