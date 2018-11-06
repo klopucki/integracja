@@ -1,4 +1,4 @@
-package pl.umcs.soap;
+package pl.umcs.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("CountriesPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://model.umcs.pl");
+        wsdl11Definition.setTargetNamespace("http://pl.umcs.model.umcs.pl");
         wsdl11Definition.setSchema(countriesSchema);
         return wsdl11Definition;
     }

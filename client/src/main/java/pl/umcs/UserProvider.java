@@ -59,7 +59,7 @@ public class UserProvider {
     }
 
     public void updateUser() {
-        User updatedInstance = new User(1, "Darek", "Wos", 44, MALE);
+        User updatedInstance = new User(1l, "Darek", "Wos", 44, MALE);
 
         HttpEntity<User> requestUpdate = new HttpEntity<>(updatedInstance);
         restTemplate.exchange(USERS_URL, HttpMethod.PUT, requestUpdate, Void.class);

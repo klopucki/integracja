@@ -1,12 +1,12 @@
-package pl.umcs.soap;
+package pl.umcs.api.soap;
 
+import localhost._8080.ws.GetCountryRequest;
+import localhost._8080.ws.GetCountryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import pl.umcs.model.GetCountryRequest;
-import pl.umcs.model.GetCountryResponse;
 
 @Endpoint
 public class CountryEndpoint {

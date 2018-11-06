@@ -1,15 +1,27 @@
 package pl.umcs.common;
 
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import static javax.persistence.EnumType.STRING;
+import static javax.persistence.GenerationType.AUTO;
+
+@Entity
 public class User {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    private Long id;
     private String firstName;
     private String lastName;
     private Integer age;
-    // fixme
+    @Enumerated(STRING)
     private Gender gender;
 
-    public User(Integer id, String firstName, String lastName, Integer age, Gender gender) {
-        this.id = id ;
+    public User(Long id, String firstName, String lastName, Integer age, Gender gender) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -27,11 +39,11 @@ public class User {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

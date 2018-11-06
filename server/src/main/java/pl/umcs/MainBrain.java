@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @SpringBootApplication
-public class App {
+public class MainBrain {
 
     @GetMapping("/hello")
     public String sayHello() {
@@ -18,6 +18,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(MainBrain.class, args);
     }
 }
