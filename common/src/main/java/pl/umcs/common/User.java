@@ -1,9 +1,10 @@
 package pl.umcs.common;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.google.common.collect.Lists;
+
+import javax.persistence.*;
+
+import java.util.List;
 
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
@@ -14,11 +15,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     private Integer age;
+
     @Enumerated(STRING)
     private Gender gender;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Address> addresses = Lists.newArrayList();
 
     public User(Long id, String firstName, String lastName, Integer age, Gender gender) {
         this.id = id;
@@ -41,10 +53,6 @@ public class User {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -77,6 +85,14 @@ public class User {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override
