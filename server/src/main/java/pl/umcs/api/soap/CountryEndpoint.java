@@ -1,12 +1,11 @@
 package pl.umcs.api.soap;
 
-import localhost._8080.ws.GetCountryRequest;
-import localhost._8080.ws.GetCountryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import pl.umcs.generated.PurchaseOrderType;
 
 @Endpoint
 public class CountryEndpoint {
@@ -21,10 +20,7 @@ public class CountryEndpoint {
 
     @PayloadRoot(localPart = "getCountryRequest")
     @ResponsePayload
-    public GetCountryResponse getCountry(@RequestPayload GetCountryRequest request) {
-        GetCountryResponse response = new GetCountryResponse();
-        response.setCountry(countryRepository.findCountry(request.getName()));
-
-        return response;
+    public PurchaseOrderType getCountry(@RequestPayload Long id) {
+        return countryRepository.findOrder(id);
     }
 }

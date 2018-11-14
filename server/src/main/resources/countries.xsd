@@ -1,36 +1,24 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost:8080/ws"
-           targetNamespace="http://localhost:8080/ws" elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://generated.umcs.pl"
+            targetNamespace="http://generated.umcs.pl"
+            elementFormDefault="qualified">
+    <xsd:element name="PurchaseOrder" type="tns:PurchaseOrderType"/>
+    <xsd:complexType name="PurchaseOrderType">
+        <xsd:sequence>
+            <xsd:element name="ShipTo" type="tns:USAddress" maxOccurs="2"/>
+            <xsd:element name="BillTo" type="tns:USAddress"/>
+        </xsd:sequence>
+        <xsd:attribute name="OrderDate" type="xsd:date"/>
+    </xsd:complexType>
 
-    <xs:element firstName="getCountryRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element firstName="firstName" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element firstName="getCountryResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element firstName="country" type="tns:country"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:complexType firstName="country">
-        <xs:sequence>
-            <xs:element firstName="firstName" type="xs:string"/>
-            <xs:element firstName="population" type="xs:int"/>
-            <xs:element firstName="capital" type="xs:string"/>
-            <xs:element firstName="currency" type="tns:currency"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:simpleType firstName="currency">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="GBP"/>
-            <xs:enumeration value="EUR"/>
-            <xs:enumeration value="PLN"/>
-        </xs:restriction>
-    </xs:simpleType>
-</xs:schema>
+    <xsd:complexType name="USAddress">
+        <xsd:sequence>
+            <xsd:element name="name"   type="xsd:string"/>
+            <xsd:element name="street" type="xsd:string"/>
+            <xsd:element name="city"   type="xsd:string"/>
+            <xsd:element name="state"  type="xsd:string"/>
+            <xsd:element name="zip"    type="xsd:integer"/>
+        </xsd:sequence>
+        <xsd:attribute name="country" type="xsd:NMTOKEN" fixed="US"/>
+    </xsd:complexType>
+</xsd:schema>
